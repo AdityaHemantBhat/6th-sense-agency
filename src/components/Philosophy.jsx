@@ -777,43 +777,41 @@ export default function Philosophy() {
 
           <div className="container mx-auto px-6 md:px-12 flex-1 flex flex-col relative z-10">
             {/* Top Row: System Status */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-20">
-              <div className="md:col-span-4 space-y-8">
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-12 mb-12 md:mb-20">
+              <div className="md:col-span-4 space-y-6 md:space-y-8">
                 <div className="flex items-center gap-4">
                   <div className="w-2 h-2 rounded-full bg-[#C8F04D] animate-ping"></div>
                   <span className="text-[10px] font-mono uppercase tracking-[0.4em] text-[#C8F04D]">System Online // Core_v1.0</span>
                 </div>
-                <h2 className="text-4xl md:text-6xl font-display leading-[0.9] uppercase">
+                <h2 className="text-4xl sm:text-5xl md:text-6xl font-display leading-[0.9] uppercase">
                   Aesthetic <br /> <span className="text-transparent" style={{ WebkitTextStroke: "1px #F5F0E8" }}>Intelligence</span>
                 </h2>
-                <div className="pt-8 border-t border-[#F5F0E8]/10 space-y-2 font-mono text-[9px] uppercase tracking-widest opacity-40">
+                <div className="pt-6 md:pt-8 border-t border-[#F5F0E8]/10 space-y-2 font-mono text-[9px] uppercase tracking-widest opacity-40">
                   <div>Loc: 23.0225° N, 72.5714° E</div>
                   <div>Network: 6SA_GLOBAL_TRANSIT</div>
                   <div>Sync: {time || "00:00:00"} LMT</div>
                 </div>
               </div>
 
-              {/* Center: The Core Icon */}
-              <div className="md:col-span-4 flex items-center justify-center">
-                <div className="w-56 h-56 rounded-full border border-[#C8F04D]/20 flex items-center justify-center relative group cursor-none">
+              <div className="md:col-span-4 flex items-center justify-center py-8 md:py-0">
+                <div className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 rounded-full border border-[#C8F04D]/20 flex items-center justify-center relative group cursor-none">
                   <div className="absolute inset-0 rounded-full bg-[#C8F04D] opacity-0 group-hover:opacity-10 transition-opacity duration-500 blur-2xl"></div>
-                  <div className="text-9xl font-display text-[#C8F04D] group-hover:scale-110 transition-transform duration-500 select-none">6</div>
+                  <div className="text-7xl sm:text-8xl md:text-9xl font-display text-[#C8F04D] group-hover:scale-110 transition-transform duration-500 select-none">6</div>
                   {/* Orbitals */}
                   <div className="absolute inset-0 border border-dashed border-[#F5F0E8]/10 rounded-full animate-[spin_20s_linear_infinite]"></div>
                   <div className="absolute -inset-4 border border-dotted border-[#F5F0E8]/5 rounded-full animate-[spin_30s_linear_infinite_reverse]"></div>
                 </div>
               </div>
 
-              {/* Right: Mechanical Navigation */}
-              <div className="md:col-span-4 flex flex-col justify-between items-end text-right">
-                <div className="space-y-12 w-full">
+              <div className="md:col-span-4 flex flex-col justify-between items-start md:items-end text-left md:text-right">
+                <div className="space-y-8 md:space-y-12 w-full">
                   <div>
-                    <span className="text-[10px] font-mono uppercase tracking-widest opacity-30 block mb-6">// Directory</span>
-                    <nav className="flex flex-col gap-3 text-2xl font-display uppercase tracking-tighter">
-                      <a href="/" className="hover:text-[#C8F04D] transition-colors inline-block">Origins</a>
-                      <a href="/about" className="hover:text-[#C8F04D] transition-colors inline-block">Intelligence</a>
-                      <a href="/projects" className="hover:text-[#C8F04D] transition-colors inline-block">Archive</a>
-                      <a href="/contact" className="hover:text-[#C8F04D] transition-colors inline-block">Terminal</a>
+                    <span className="text-[10px] font-mono uppercase tracking-widest opacity-30 block mb-4 md:mb-6">// Directory</span>
+                    <nav className="flex flex-col gap-3 text-xl sm:text-2xl font-display uppercase tracking-tighter">
+                      <a href="/" onClick={(e) => { e.preventDefault(); window.navigateTo?.("/"); }} className="hover:text-[#C8F04D] transition-colors inline-block">Origins</a>
+                      <a href="/about" onClick={(e) => { e.preventDefault(); window.navigateTo?.("/about"); }} className="hover:text-[#C8F04D] transition-colors inline-block">Intelligence</a>
+                      <a href="/projects" onClick={(e) => { e.preventDefault(); window.navigateTo?.("/projects"); }} className="hover:text-[#C8F04D] transition-colors inline-block">Archive</a>
+                      <a href="/contact" onClick={(e) => { e.preventDefault(); window.navigateTo?.("/contact"); }} className="hover:text-[#C8F04D] transition-colors inline-block">Terminal</a>
                     </nav>
                   </div>
                 </div>
@@ -821,32 +819,31 @@ export default function Philosophy() {
             </div>
 
             {/* Bottom Row: Info Bar */}
-            <div className="mt-auto flex flex-col md:flex-row justify-between items-end border-t border-[#F5F0E8]/10 pt-8 pb-12 gap-8">
-              <div className="flex gap-12 font-mono text-[10px] uppercase tracking-widest opacity-50">
+            <div className="mt-auto flex flex-col md:flex-row justify-between items-center md:items-end border-t border-[#F5F0E8]/10 pt-8 pb-12 gap-8 text-center md:text-left">
+              <div className="flex gap-8 md:gap-12 font-mono text-[10px] uppercase tracking-widest opacity-50 justify-center md:justify-start">
                 <a href="#" className="hover:text-[#C8F04D] transition-colors">Instagram</a>
                 <a href="#" className="hover:text-[#C8F04D] transition-colors">Twitter (X)</a>
                 <a href="#" className="hover:text-[#C8F04D] transition-colors">LinkedIn</a>
               </div>
-              <div className="font-mono text-[9px] uppercase tracking-[0.3em] opacity-30">
+              <div className="font-mono text-[9px] uppercase tracking-[0.3em] opacity-30 max-w-[250px] md:max-w-none">
                 © 2026 6th Sense Agency. Designed for the Avant-Garde.
               </div>
             </div>
 
-            {/* Massive Footer Text */}
             <div
               ref={footerTextRef}
-              className="absolute bottom-0 left-0 w-full text-center overflow-hidden flex justify-center flex-wrap -mb-6 md:-mb-10 px-2 pointer-events-none select-none"
+              className="absolute bottom-0 left-0 w-full text-center overflow-hidden flex justify-center flex-nowrap -mb-3 sm:-mb-5 md:-mb-10 px-2 pointer-events-none select-none"
             >
               {"6TH SENSE AGENCY".split("").map((char, i) => (
                 <span
                   key={i}
-                  className="footer-char text-[10vw] leading-none font-display font-bold text-[#F5F0E8]/5"
+                  className="footer-char text-[11vw] md:text-[10vw] leading-none font-display font-bold text-[#F5F0E8]/5"
                   style={{
                     display: "inline-block",
                     transformOrigin: "bottom center",
                   }}
                 >
-                  {char === " " ? "\u00A0" : char}
+                  {char === " " ? "\u00A0\u00A0" : char}
                 </span>
               ))}
             </div>
