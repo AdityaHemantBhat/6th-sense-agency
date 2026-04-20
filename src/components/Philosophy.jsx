@@ -699,36 +699,36 @@ export default function Philosophy() {
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
-              {[
-                {
-                  quote:
-                    "6th Sense didn't just build our platform — they reimagined what our brand could become. The result was beyond anything we envisioned.",
-                  name: "DAVID CHEN",
-                  role: "CEO, Aurora Tech",
-                  accent: "#C8F04D",
-                },
-                {
-                  quote:
-                    "They operate like a tier-1 consultancy with the speed of a startup. Our revenue increased 340% within six months of launch.",
-                  name: "SARAH MITCHELL",
-                  role: "Founder, Nexus Digital",
-                  accent: "#FF3D2E",
-                },
-                {
-                  quote:
-                    "Working with them felt like having a creative partner, not a vendor. They challenged every assumption and delivered excellence.",
-                  name: "MARCUS REED",
-                  role: "CTO, Prism Labs",
-                  accent: "#FF3D2E",
-                },
-                {
-                  quote:
-                    "The attention to detail is obsessive. Every micro-interaction, every animation, every pixel — they treat it like art.",
-                  name: "ELENA VOSS",
-                  role: "Head of Brand, Vertex",
-                  accent: "#C8F04D",
-                },
-              ].map((testimonial, i) => (
+            { [
+              {
+                quote:
+                  "6th Sense didn’t just build our website — they actually understood our business. The final result was way better than what we had in mind.",
+                name: "RAHUL SHARMA",
+                role: "Founder, TechNova Solutions",
+                accent: "#C8F04D",
+              },
+              {
+                quote:
+                  "They work fast but don’t compromise on quality. Within a few months of launch, we saw a massive jump in leads and conversions.",
+                name: "PRIYA DESAI",
+                role: "Co-Founder, GrowthNest",
+                accent: "#FF3D2E",
+              },
+              {
+                quote:
+                  "It never felt like we were working with an agency. More like a team that genuinely cared about our success and pushed us in the right direction.",
+                name: "AMIT VERMA",
+                role: "CTO, PixelCraft",
+                accent: "#FF3D2E",
+              },
+              {
+                quote:
+                  "Their attention to detail is honestly impressive. From design to performance, everything was handled perfectly.",
+                name: "NEHA KULKARNI",
+                role: "Brand Manager, ElevateX",
+                accent: "#C8F04D",
+              },
+            ].map((testimonial, i) => (
                 <div
                   key={i}
                   ref={(el) => (testimonialCardsRef.current[i] = el)}
@@ -832,15 +832,17 @@ export default function Philosophy() {
 
             <div
               ref={footerTextRef}
-              className="absolute bottom-0 left-0 w-full text-center overflow-hidden flex justify-center flex-nowrap -mb-3 sm:-mb-5 md:-mb-10 px-2 pointer-events-none select-none"
+              className="absolute bottom-0 left-0 w-full text-center overflow-hidden flex justify-center items-end flex-nowrap -mb-2 sm:-mb-5 md:-mb-8 lg:-mb-12 px-4 pointer-events-none select-none"
             >
               {"6TH SENSE AGENCY".split("").map((char, i) => (
                 <span
                   key={i}
-                  className="footer-char text-[11vw] md:text-[10vw] leading-none font-display font-bold text-[#F5F0E8]/5"
+                  className="footer-char font-display font-bold text-[#F5F0E8]/5 uppercase tracking-tighter"
                   style={{
                     display: "inline-block",
                     transformOrigin: "bottom center",
+                    fontSize: "clamp(2rem, 9.5vw, 15rem)",
+                    lineHeight: "0.8",
                   }}
                 >
                   {char === " " ? "\u00A0\u00A0" : char}
