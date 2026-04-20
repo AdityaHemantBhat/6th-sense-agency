@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -9,34 +9,43 @@ export default async function handler(req, res) {
     const { email, serviceId, serviceName } = req.body;
 
     if (!email || !serviceId) {
-      return res.status(400).json({ error: "Email and service selection are required." });
+      return res.status(400).json({ error: "Email and service are required." });
     }
 
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: process.env.SMTP_HOST || 'smtp.hostinger.com',
+      port: parseInt(process.env.SMTP_PORT || '465'),
+      secure: true,
       auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
 
     const mailOptions = {
-      from: process.env.GMAIL_USER,
+      from: `"6th Sense Booking" <${process.env.SMTP_USER}>`,
       to: "support@sixthsenseagency.in",
-      subject: `New Project Started | 6th Sense Agency`,
+      replyTo: email,
+      subject: `Project Brief: ${serviceName}`,
       html: `
-        <h2>New Project Started</h2>
-        <p>A client has started a new project via the 6th Sense Agency booking page.</p>
-        <p><strong>Client Email:</strong> ${email}</p>
-        <p><strong>Selected Service:</strong> ${serviceName} (ID: ${serviceId})</p>
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #111; border: 1px solid #eee; border-radius: 10px; overflow: hidden;">
+          <h2 style="color: #000; background: #C8F04D; padding: 30px; margin: 0; text-align: center; font-size: 24px; text-transform: uppercase;">Project Request</h2>
+          <div style="padding: 30px;">
+            <p style="font-size: 18px; margin-bottom: 20px;">A potential client has requested a quote.</p>
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 5px; border-left: 4px solid #C8F04D;">
+              <p style="margin-bottom: 10px;"><strong>Client:</strong> ${email}</p>
+              <p style="margin-bottom: 0;"><strong>Selected Service:</strong> ${serviceName}</p>
+            </div>
+            <p style="margin-top: 30px; font-size: 11px; color: #999; text-align: center;">ID: ${serviceId}</p>
+          </div>
+        </div>
       `
     };
 
     await transporter.sendMail(mailOptions);
-
-    res.status(200).json({ success: true, message: "Booking email sent successfully" });
+    res.status(200).json({ success: true, message: "Booking email sent" });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Error sending booking email." });
+    console.error("Booking SMTP Error:", error);
+    res.status(500).json({ error: "Booking email failed.", details: error.message });
   }
 }

@@ -1,4 +1,4 @@
-const nodemailer = require('nodemailer');
+import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -13,34 +13,43 @@ export default async function handler(req, res) {
     }
 
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      host: process.env.SMTP_HOST || 'smtp.hostinger.com',
+      port: parseInt(process.env.SMTP_PORT || '465'),
+      secure: true,
       auth: {
-        user: process.env.GMAIL_USER,
-        pass: process.env.GMAIL_APP_PASSWORD,
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS,
       },
     });
 
     const mailOptions = {
-      from: process.env.GMAIL_USER,
+      from: `"6th Sense Agency" <${process.env.SMTP_USER}>`,
       to: "support@sixthsenseagency.in",
-      subject: `New Contact Request | 6th Sense Agency`,
+      replyTo: email,
+      subject: `New Contact Request | ${name}`,
       html: `
-        <h2>New Client Inquiry</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Company:</strong> ${company || 'N/A'}</p>
-        <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
-        <p><strong>Services Needed:</strong> ${services ? services.join(', ') : 'None selected'}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message || 'No additional details provided.'}</p>
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; color: #111; border: 1px solid #eee; border-radius: 10px; overflow: hidden;">
+          <h2 style="color: #000; background: #C8F04D; padding: 30px; margin: 0; text-align: center; font-size: 24px; text-transform: uppercase;">New Inquiry</h2>
+          <div style="padding: 30px;">
+            <p style="margin-bottom: 10px;"><strong>Name:</strong> ${name}</p>
+            <p style="margin-bottom: 10px;"><strong>Email:</strong> ${email}</p>
+            <p style="margin-bottom: 10px;"><strong>Company:</strong> ${company || 'N/A'}</p>
+            <p style="margin-bottom: 10px;"><strong>Phone:</strong> ${phone || 'N/A'}</p>
+            <p style="margin-bottom: 20px;"><strong>Interest:</strong> ${services ? services.join(', ') : 'None'}</p>
+            <div style="background: #f9f9f9; padding: 20px; border-radius: 5px; border-left: 4px solid #C8F04D;">
+              <p style="margin: 0; font-weight: bold; margin-bottom: 10px;">Message:</p>
+              <p style="margin: 0; white-space: pre-wrap; line-height: 1.6;">${message || 'No additional details provided.'}</p>
+            </div>
+            <p style="margin-top: 30px; font-size: 11px; color: #999; text-align: center;">Capture: sixthsenseagency.in</p>
+          </div>
+        </div>
       `
     };
 
     await transporter.sendMail(mailOptions);
-
     res.status(200).json({ success: true, message: "Email sent successfully" });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Error sending email." });
+    console.error("SMTP Error:", error);
+    res.status(500).json({ error: "Email delivery failed.", details: error.message });
   }
 }
