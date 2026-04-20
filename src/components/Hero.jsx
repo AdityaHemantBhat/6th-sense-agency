@@ -101,8 +101,8 @@ export default function Hero() {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: () => window.innerWidth < 768 ? "+=300%" : "+=150%",
-        scrub: window.innerWidth < 768 ? 3 : 2,
+        end: () => window.innerWidth < 768 ? "+=200%" : "+=150%",
+        scrub: 1.5,
         pin: true,
       },
     });
@@ -136,7 +136,7 @@ export default function Hero() {
         className="hero-bottom-glow absolute bottom-0 left-1/2 -translate-x-1/2 w-[150%] h-[50%] rounded-[100%] opacity-0 pointer-events-none z-0"
         style={{ background: "radial-gradient(ellipse at center, rgba(200,240,77,0.25) 0%, transparent 60%)" }}
       />
-      
+
       {/* Staircase entrance columns */}
       <div
         ref={stairRef}

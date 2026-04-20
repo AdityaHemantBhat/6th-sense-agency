@@ -114,8 +114,8 @@ export default function Philosophy() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: () => `+=${tl.duration() * (isMobile ? 2500 : isTablet ? 1800 : 1200)}`,
-          scrub: isMobile ? 3 : isTablet ? 2 : 1.5,
+          end: () => `+=${tl.duration() * (isMobile ? 1500 : isTablet ? 1350 : 1200)}`,
+          scrub: 1.5,
           pin: true,
           invalidateOnRefresh: true,
           anticipatePin: 1
@@ -697,36 +697,36 @@ export default function Philosophy() {
               </h2>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
-            { [
-              {
-                quote:
-                  "6th Sense didn’t just build our website — they actually understood our business. The final result was way better than what we had in mind.",
-                name: "RAHUL SHARMA",
-                role: "Founder, TechNova Solutions",
-                accent: "#C8F04D",
-              },
-              {
-                quote:
-                  "They work fast but don’t compromise on quality. Within a few months of launch, we saw a massive jump in leads and conversions.",
-                name: "PRIYA DESAI",
-                role: "Co-Founder, GrowthNest",
-                accent: "#FF3D2E",
-              },
-              {
-                quote:
-                  "It never felt like we were working with an agency. More like a team that genuinely cared about our success and pushed us in the right direction.",
-                name: "AMIT VERMA",
-                role: "CTO, PixelCraft",
-                accent: "#FF3D2E",
-              },
-              {
-                quote:
-                  "Their attention to detail is honestly impressive. From design to performance, everything was handled perfectly.",
-                name: "NEHA KULKARNI",
-                role: "Brand Manager, ElevateX",
-                accent: "#C8F04D",
-              },
-            ].map((testimonial, i) => (
+              {[
+                {
+                  quote:
+                    "6th Sense didn’t just build our website — they actually understood our business. The final result was way better than what we had in mind.",
+                  name: "RAHUL SHARMA",
+                  role: "Founder, TechNova Solutions",
+                  accent: "#C8F04D",
+                },
+                {
+                  quote:
+                    "They work fast but don’t compromise on quality. Within a few months of launch, we saw a massive jump in leads and conversions.",
+                  name: "PRIYA DESAI",
+                  role: "Co-Founder, GrowthNest",
+                  accent: "#FF3D2E",
+                },
+                {
+                  quote:
+                    "It never felt like we were working with an agency. More like a team that genuinely cared about our success and pushed us in the right direction.",
+                  name: "AMIT VERMA",
+                  role: "CTO, PixelCraft",
+                  accent: "#FF3D2E",
+                },
+                {
+                  quote:
+                    "Their attention to detail is honestly impressive. From design to performance, everything was handled perfectly.",
+                  name: "NEHA KULKARNI",
+                  role: "Brand Manager, ElevateX",
+                  accent: "#C8F04D",
+                },
+              ].map((testimonial, i) => (
                 <div
                   key={i}
                   ref={(el) => (testimonialCardsRef.current[i] = el)}
