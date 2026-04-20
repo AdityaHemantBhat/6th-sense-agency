@@ -168,7 +168,7 @@ export default function Hero() {
         className="relative z-10 h-full flex flex-col justify-center items-center px-4 pointer-events-none"
         style={{ willChange: "transform" }}
       >
-        <div className="overflow-hidden flex flex-wrap justify-center max-w-[90vw]">
+        <h1 className="overflow-hidden flex flex-wrap justify-center max-w-[90vw]">
           {letters.map((letter, index) => (
             <motion.span
               key={index}
@@ -185,7 +185,7 @@ export default function Hero() {
               {letter === " " ? "\u00A0" : letter}
             </motion.span>
           ))}
-        </div>
+        </h1>
 
         <motion.p
           initial={{ y: 40, opacity: 0, scale: 0.9 }}

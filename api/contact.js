@@ -22,7 +22,7 @@ export default async function handler(req, res) {
 
     const mailOptions = {
       from: process.env.GMAIL_USER,
-      to: process.env.GMAIL_USER,
+      to: "support@sixthsenseagency.in",
       subject: `New Contact Request | 6th Sense Agency`,
       html: `
         <h2>New Client Inquiry</h2>
