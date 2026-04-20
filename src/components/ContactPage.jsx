@@ -224,8 +224,8 @@ export default function ContactPage() {
               <div>
                 <h3 className="text-xs font-mono uppercase tracking-[0.3em] text-[#C8F04D] mb-6">Direct Line</h3>
                 <div className="space-y-4">
-                  <a href="mailto:hello@6thsenseagency.com" className="block text-lg sm:text-xl font-body text-[#F5F0E8]/80 hover:text-[#C8F04D] transition-colors hover-target">
-                    hello@6thsenseagency.com
+                  <a href="mailto:support@sixthsenseagency.in" className="block text-lg sm:text-xl font-body text-[#F5F0E8]/80 hover:text-[#C8F04D] transition-colors hover-target">
+                    support@sixthsenseagency.in
                   </a>
                   <a href="tel:+919512280710" className="block text-lg sm:text-xl font-body text-[#F5F0E8]/80 hover:text-[#C8F04D] transition-colors hover-target">
                     +91 9512280710
