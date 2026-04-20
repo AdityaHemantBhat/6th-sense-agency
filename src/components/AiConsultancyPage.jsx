@@ -94,9 +94,9 @@ export default function AiConsultancyPage() {
         scrollTrigger: {
           trigger: horizontalRef.current,
           start: "top top",
-          end: `+=${totalWidth}`,
+          end: () => `+=${totalWidth * (window.innerWidth < 768 ? 3.5 : 2)}`,
           pin: true,
-          scrub: 1,
+          scrub: window.innerWidth < 768 ? 2.5 : 1,
           anticipatePin: 1
         }
       });

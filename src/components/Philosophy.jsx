@@ -107,15 +107,18 @@ export default function Philosophy() {
         if (panel) gsap.set(panel, { yPercent: 100 });
       });
 
+      const isMobile = window.innerWidth < 768;
+      const isTablet = window.innerWidth >= 768 && window.innerWidth < 1024;
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          scrub: 1.5,
+          end: () => `+=${tl.duration() * (isMobile ? 2500 : isTablet ? 1800 : 1200)}`,
+          scrub: isMobile ? 3 : isTablet ? 2 : 1.5,
           pin: true,
           invalidateOnRefresh: true,
-          fastScrollEnd: true,
-          preventOverlap: true
+          anticipatePin: 1
         },
       });
 
@@ -351,12 +354,7 @@ export default function Philosophy() {
         );
       }
 
-      // Use a larger multiplier to make the scroll very slow and deliberate
-      if (tl.scrollTrigger) {
-        tl.scrollTrigger.vars.end = `+=${tl.duration() * 1200}`;
-        tl.scrollTrigger.refresh();
-      }
-
+      // Scroll distance is now handled by the responsive function in the ScrollTrigger config
       ScrollTrigger.refresh();
 
       return () => {
@@ -366,8 +364,8 @@ export default function Philosophy() {
       };
     };
 
-    // Delay initialization to avoid race conditions with layout/images
-    const timeout = setTimeout(initGSAP, 200);
+    // Delay initialization to ensure layout stabilizes
+    const timeout = setTimeout(initGSAP, 500);
 
     return () => {
       clearTimeout(timeout);

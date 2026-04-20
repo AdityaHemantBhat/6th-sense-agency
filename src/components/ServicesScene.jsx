@@ -221,8 +221,8 @@ export default function ServicesScene() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: "+=3000", // Fixed scroll distance for consistent slow speed
-          scrub: 1,
+          end: () => window.innerWidth < 768 ? "+=8000" : "+=4000",
+          scrub: window.innerWidth < 768 ? 2.5 : 1,
           pin: true,
           onUpdate: (self) => {
             const progress = self.progress;
@@ -261,7 +261,7 @@ export default function ServicesScene() {
       });
 
       // Update container height to match pin duration + viewport
-      containerRef.current.style.height = `${3000 + window.innerHeight}px`;
+      containerRef.current.style.height = `${(window.innerWidth < 768 ? 8000 : 4000) + window.innerHeight}px`;
 
       ScrollTrigger.refresh();
     }, 100);
