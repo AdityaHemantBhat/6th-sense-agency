@@ -163,7 +163,7 @@ export default function BookingPage({ onClose }) {
       animate={{ y: 0 }}
       exit={{ y: "-100%" }}
       transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-      className="fixed inset-0 z-[100000] bg-[#050505] text-[#F5F0E8] overflow-hidden flex"
+      className="fixed inset-0 z-[100000] bg-[#050505] text-[#F5F0E8] overflow-y-auto overflow-x-hidden flex flex-col"
       ref={containerRef}
     >
       <Cursor />
@@ -188,10 +188,10 @@ export default function BookingPage({ onClose }) {
       {/* Main UI */}
       <div
         ref={uiRef}
-        className="relative z-10 w-full h-full flex flex-col xl:flex-row"
+        className="relative z-10 w-full flex flex-col xl:flex-row min-h-screen"
       >
         {/* Left Side - Visual & Typography */}
-        <div className="w-full xl:w-1/2 h-[40vh] xl:h-full p-8 md:p-16 flex flex-col justify-end xl:justify-center relative border-r border-[#F5F0E8]/10 overflow-hidden">
+        <div className="w-full xl:w-1/2 min-h-[50vh] xl:h-screen p-8 md:p-16 flex flex-col justify-center relative border-b xl:border-b-0 xl:border-r border-[#F5F0E8]/10 overflow-hidden">
           
           {/* Dynamic Image Container bound to hover */}
           <div ref={imageContainerRef} className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -229,8 +229,8 @@ export default function BookingPage({ onClose }) {
         </div>
 
         {/* Right Side - Interactive List */}
-        <div className="w-full xl:w-1/2 h-[60vh] xl:h-full overflow-y-auto scrollbar-hide pointer-events-auto relative bg-[#0a0a0a]">
-          <div className="pt-10 xl:pt-[20vh] pb-32 px-6 md:px-20 flex flex-col">
+        <div className="w-full xl:w-1/2 h-auto xl:h-screen pointer-events-auto relative bg-[#0a0a0a]">
+          <div className="pt-10 xl:pt-[20vh] pb-48 px-6 md:px-20 flex flex-col">
             <div className="booking-line w-full h-px bg-[#F5F0E8]/20 mb-8" />
             
             {services.map((service, index) => {
@@ -243,26 +243,21 @@ export default function BookingPage({ onClose }) {
                   onClick={() => setSelectedService(service.id)}
                   onMouseEnter={() => setHoveredService(service.id)}
                   onMouseLeave={() => setHoveredService(null)}
-                  className="booking-item group border-b border-[#F5F0E8]/10 py-8 hover-target cursor-pointer relative transition-all duration-500 hover:pl-6 bg-transparent"
+                  className="booking-item group border-b border-[#F5F0E8]/10 py-6 sm:py-8 hover-target cursor-pointer relative transition-all duration-500 hover:pl-4 sm:hover:pl-6 bg-transparent"
                 >
-                  <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-                    <div className="flex items-center gap-6">
-                      <span className={`font-mono text-xs md:text-sm transition-colors duration-500 ${isSelected ? "text-[#C8F04D]" : "text-[#F5F0E8]/30"}`}>
+                  <div className="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-6">
+                    <div className="flex items-center gap-4 sm:gap-6">
+                      <span className={`font-mono text-[10px] sm:text-xs md:text-sm transition-colors duration-500 ${isSelected ? "text-[#C8F04D]" : "text-[#F5F0E8]/30"}`}>
                         {String(index + 1).padStart(2, "0")}
                       </span>
-                      <h2 className={`text-3xl md:text-5xl font-display uppercase tracking-tight transition-colors duration-500 ${isSelected || isHovered ? "text-[#C8F04D]" : "text-[#F5F0E8]"}`}>
+                      <h2 className={`text-2xl sm:text-3xl md:text-5xl font-display uppercase tracking-tight transition-colors duration-500 ${isSelected || isHovered ? "text-[#C8F04D]" : "text-[#F5F0E8]"}`}>
                         {service.name}
                       </h2>
                     </div>
-                    
-                    <span className={`font-mono text-xs tracking-[0.2em] px-4 py-2 rounded-full border transition-all duration-500 ${isSelected || isHovered ? "border-[#C8F04D] text-[#C8F04D]" : "border-[#F5F0E8]/20 text-[#F5F0E8]/40"}`}>
-                      {service.price}
-                    </span>
                   </div>
 
-                  {/* Expandable description Native GSAP style expansion conceptually via tailwind max-h */}
-                  <div className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${isSelected ? "max-h-[200px] opacity-100 mt-6 md:ml-[3.5rem]" : "max-h-0 opacity-0 mt-0 md:ml-[3.5rem]"}`}>
-                    <p className="font-mono text-sm md:text-base text-[#F5F0E8]/60 leading-relaxed border-l border-[#C8F04D] pl-4">
+                  <div className={`overflow-hidden transition-all duration-700 ease-[cubic-bezier(0.76,0,0.24,1)] ${isSelected ? "max-h-[300px] opacity-100 mt-4 sm:mt-6 sm:ml-[3.5rem]" : "max-h-0 opacity-0 mt-0 sm:ml-[3.5rem]"}`}>
+                    <p className="font-mono text-xs sm:text-sm md:text-base text-[#F5F0E8]/60 leading-relaxed border-l border-[#C8F04D] pl-3 sm:pl-4">
                       {service.desc}
                     </p>
                   </div>
