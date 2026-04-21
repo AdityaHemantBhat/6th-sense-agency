@@ -99,7 +99,7 @@ export default function App() {
             const el = document.getElementById(hash === "projects" ? "about" : hash);
             if (el && lenisRef.current) {
               // If going to projects, we need to scroll deep into the pinned section
-              const offset = hash === "projects" ? window.innerHeight * 5 : 0;
+              const offset = hash === "projects" ? window.innerHeight * 22 : 0;
               lenisRef.current.scrollTo(el, { offset: offset, duration: 1.5 });
             }
           }, 500);
