@@ -101,7 +101,7 @@ export default function Hero() {
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
-        end: () => window.innerWidth < 768 ? "+=200%" : "+=150%",
+        end: () => window.innerWidth < 768 ? "+=150%" : "+=150%",
         scrub: 1.5,
         pin: true,
       },

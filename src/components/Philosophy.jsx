@@ -114,7 +114,7 @@ export default function Philosophy() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: () => `+=${tl.duration() * (isMobile ? 1200 : isTablet ? 1250 : 1200)}`,
+          end: () => `+=${tl.duration() * (isMobile ? 1000 : isTablet ? 1200 : 1200)}`,
           scrub: 1.5,
           pin: true,
           invalidateOnRefresh: true,
