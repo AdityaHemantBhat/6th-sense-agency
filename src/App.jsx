@@ -17,6 +17,11 @@ import BookingPage from "./components/BookingPage";
 import PageTransition from "./components/PageTransition";
 
 gsap.registerPlugin(ScrollTrigger);
+ScrollTrigger.config({ 
+  ignoreMobileResize: true,
+  autoRefreshEvents: "visibilitychange,DOMContentLoaded,load" 
+});
+ScrollTrigger.normalizeScroll(true);
 
 function HomePage({ isLoading, setIsLoading }) {
   useEffect(() => {

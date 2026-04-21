@@ -93,7 +93,7 @@ export default function Philosophy() {
   useEffect(() => {
     const timer = setInterval(() => {
       const now = new Date();
-      setTime(now.toLocaleTimeString("en-US", { hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit" }));
+      setTime(now.toLocaleTimeString("en-IN", { hour12: false, hour: "2-digit", minute: "2-digit", second: "2-digit" }));
     }, 1000);
     return () => clearInterval(timer);
   }, []);
@@ -114,7 +114,7 @@ export default function Philosophy() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: "top top",
-          end: () => `+=${tl.duration() * (isMobile ? 1500 : isTablet ? 1350 : 1200)}`,
+          end: () => `+=${tl.duration() * (isMobile ? 1200 : isTablet ? 1250 : 1200)}`,
           scrub: 1.5,
           pin: true,
           invalidateOnRefresh: true,
@@ -198,11 +198,11 @@ export default function Philosophy() {
         { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" },
         11.2,
       );
-      tl.to(aboutPreviewRef.current, { opacity: 1, duration: 1.5 }, 12.0);
+      tl.to(aboutPreviewRef.current, { opacity: 1, duration: 0.5 }, 12.0);
       tl.to(
         aboutPreviewRef.current,
-        { opacity: 0, y: -20, duration: 0.6, ease: "power2.inOut" },
-        13.5,
+        { opacity: 0, y: -20, duration: 0.4, ease: "power2.inOut" },
+        12.5,
       );
 
       // ==========================================
@@ -211,21 +211,21 @@ export default function Philosophy() {
       tl.fromTo(
         sloganRef.current,
         { yPercent: 100 },
-        { yPercent: 0, duration: 1.2, ease: "expo.out" },
-        14,
+        { yPercent: 0, duration: 1.0, ease: "expo.out" },
+        13.0,
       );
-      tl.to(sloganText1Ref.current, { x: "10vw", duration: 3 }, 14);
-      tl.to(sloganText2Ref.current, { x: "-10vw", duration: 3 }, 14);
+      tl.to(sloganText1Ref.current, { x: "10vw", duration: 1.5 }, 13.0);
+      tl.to(sloganText2Ref.current, { x: "-10vw", duration: 1.5 }, 13.0);
       tl.to(
         sloganRef.current,
-        { scale: 1.2, opacity: 0, duration: 1, ease: "power2.in" },
-        17,
+        { scale: 1.2, opacity: 0, duration: 0.8, ease: "power2.in" },
+        14.5,
       );
 
       // ==========================================
       // PHASE 5: PROJECTS STACK
       // ==========================================
-      let projectTime = 18;
+      let projectTime = 15.3;
       panelsRef.current.forEach((panel, i) => {
         if (!panel) return;
         tl.to(
@@ -252,11 +252,11 @@ export default function Philosophy() {
             );
           }
         }
-        projectTime += 2.5; // Space them out on scroll
+        projectTime += 1; // Space them out on scroll
       });
 
       // Pause on last project slightly
-      projectTime += 1;
+      projectTime += 0.1;
 
       // ==========================================
       // PHASE 6: TEAM SECTION
@@ -285,7 +285,7 @@ export default function Philosophy() {
         );
       });
 
-      projectTime += 4;
+      projectTime += 2;
 
       // ==========================================
       // PHASE 7: HOW WE WORK / PROCESS
@@ -305,7 +305,7 @@ export default function Philosophy() {
           projectTime + 1 + i * 0.3,
         );
       });
-      projectTime += 5;
+      projectTime += 3;
 
       // ==========================================
       // PHASE 8: TESTIMONIALS
@@ -325,7 +325,7 @@ export default function Philosophy() {
           projectTime + 1 + i * 0.4,
         );
       });
-      projectTime += 5;
+      projectTime += 3.4;
 
       // ==========================================
       // PHASE 10: FOOTER
@@ -785,9 +785,8 @@ export default function Philosophy() {
                   Aesthetic <br /> <span className="text-transparent" style={{ WebkitTextStroke: "1px #F5F0E8" }}>Intelligence</span>
                 </h2>
                 <div className="pt-6 md:pt-8 border-t border-[#F5F0E8]/10 space-y-2 font-mono text-[9px] uppercase tracking-widest opacity-40">
-                  <div>Loc: 23.0225° N, 72.5714° E</div>
                   <div>Network: 6SA_GLOBAL_TRANSIT</div>
-                  <div>Sync: {time || "00:00:00"} LMT</div>
+                  <div>Sync: {time || "00:00:00"} IST</div>
                 </div>
               </div>
 
