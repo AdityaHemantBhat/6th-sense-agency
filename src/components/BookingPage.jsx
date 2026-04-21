@@ -163,7 +163,8 @@ export default function BookingPage({ onClose }) {
       animate={{ y: 0 }}
       exit={{ y: "-100%" }}
       transition={{ duration: 1.2, ease: [0.76, 0, 0.24, 1] }}
-      className="fixed inset-0 z-[100000] bg-[#050505] text-[#F5F0E8] overflow-y-auto overflow-x-hidden flex flex-col"
+      className="fixed inset-0 z-[100000] bg-[#050505] text-[#F5F0E8] overflow-y-auto overflow-x-hidden flex flex-col pointer-events-auto"
+      style={{ touchAction: "pan-y", overscrollBehaviorY: "contain" }}
       ref={containerRef}
       data-lenis-prevent
     >

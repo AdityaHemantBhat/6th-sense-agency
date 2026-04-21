@@ -21,7 +21,7 @@ ScrollTrigger.config({
   ignoreMobileResize: true,
   autoRefreshEvents: "visibilitychange,DOMContentLoaded,load" 
 });
-ScrollTrigger.normalizeScroll(true);
+// ScrollTrigger.normalizeScroll(true);
 
 function HomePage({ isLoading, setIsLoading }) {
   useEffect(() => {
