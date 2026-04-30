@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Analytics } from "@vercel/analytics/react";
 
 import Cursor from "./components/Cursor";
 import Loader from "./components/Loader";
@@ -138,6 +139,7 @@ export default function App() {
       <PageTransition />
       <div className="noise-overlay" />
       <Cursor />
+      <Analytics />
       {currentPath === "/business-consultancy" ? (
         <AiConsultancyPage />
       ) : currentPath === "/contact" ? (
